@@ -19,7 +19,6 @@ class Auth extends BaseController
         return view('auth/register');
     }
 
-
     public function register()
     {
         $userModel = new User();
@@ -32,11 +31,13 @@ class Auth extends BaseController
             'updated_at' => date('Y-m-d H:i:s'),
         ];
 
-        if (!$validation->run($data, 'signup')) return view('signup');
+        if (!$validation->run($data, 'signup')) {
+            return view('signup');
+        }
+        
         $userModel->save($data);
         redirect('login');
     }
-
 
     public function login()
     {
@@ -45,7 +46,10 @@ class Auth extends BaseController
             'password' => $this->request->getVar('password'),
         ];
         $validation = Services::validation();
-        if (!$validation->run($data, 'login')) return view('login');
+        if (!$validation->run($data, 'login')) {
+            return view('login');
+        }
+        
         $userModel = new User();
         $email = $this->request->getVar('email');
         $password = $this->request->getVar('password');
