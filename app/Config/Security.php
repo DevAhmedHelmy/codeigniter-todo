@@ -98,4 +98,13 @@ class Security extends BaseConfig
      * @deprecated `Config\Cookie` $samesite property is used.
      */
     public string $samesite = 'Lax';
+
+    /**
+     * --------------------------------------------------------------------------
+     * Authentication Enabled
+     * --------------------------------------------------------------------------
+     *
+     * Indicates whether authentication is enabled or not.
+     */
+    public bool $authenticationEnabled = true;
 }
