@@ -40,6 +40,12 @@ $myRoutes = [
     '/login' => 'Auth::loginPage',
     '/register' => 'Auth::registerPage',
     '/test/(:any)' => 'Welcome::test/$1',
+    '/todos' => 'Todo::index',
+    '/todos/create' => 'Todo::create',
+    '/todos/store' => 'Todo::store',
+    '/todos/edit/(:any)' => 'Todo::edit/$1',
+    '/todos/update/(:any)' => 'Todo::update/$1',
+    '/todos/delete/(:any)' => 'Todo::delete/$1',
 ];
 
 
