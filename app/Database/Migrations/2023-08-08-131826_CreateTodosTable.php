@@ -4,42 +4,48 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreateUsersTable extends Migration
+class CreateTodosTable extends Migration
 {
     public function up()
     {
         $this->forge->addField([
             'id' => [
                 'type' => 'INT',
-                'constraint' => 11,
-                'unsigned' => true,
                 'auto_increment' => true,
+                'unsigned' => true,
             ],
-            'name' => [
+            'title' => [
                 'type' => 'VARCHAR',
-                'constraint' => '100',
+                'constraint' => 255
             ],
-            'email' => [
-                'type' => 'VARCHAR',
-                'constraint' => '100',
+            'body' => [
+                'type' => 'TEXT' ,
+                'null' => true
             ],
-            'password' => [
+            'status' => [
                 'type' => 'VARCHAR',
-                'constraint' => '100',
+                'constraint' => 255
             ],
             'created_at' => [
                 'type' => 'DATETIME',
             ],
             'updated_at' => [
                 'type' => 'DATETIME',
-            ]
+            ],
+            'user_id' => [
+                'type' => 'INT',
+                'constraint' => 11,
+                'unsigned' => true,
+            ],
+
         ]);
+        $this->forge->addForeignKey('user_id', 'users', 'id', 'CASCADE', 'CASCADE');
         $this->forge->addPrimaryKey('id');
-        $this->forge->createTable('users');
+        $this->forge->createTable('todos');
     }
 
     public function down()
     {
-        $this->forge->dropTable('users');
+        $this->forge->dropTable('todos');
     }
 }
