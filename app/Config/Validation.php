@@ -36,6 +36,7 @@ class Validation extends BaseConfig
     public array $templates = [
         'list'   => 'CodeIgniter\Validation\Views\list',
         'single' => 'CodeIgniter\Validation\Views\single',
+        'my_list' => '_errors_list',
     ];
 
     // --------------------------------------------------------------------
@@ -44,45 +45,14 @@ class Validation extends BaseConfig
 
 
     public $login = [
-        'email' => [
-            'rules' => 'required',
-            'errors' => [
-                'required' => '{field} is required',
-            ]
-        ],
-        'password' => [
-            'rules' => 'required',
-            'errors' => [
-                'required' => '{field} is required',
-            ]
-        ]
+        'email' => 'required|valid_email',
+        'password' => 'required',
     ];
 
     public $signup = [
-        'name' => [
-            'rules' => 'required',
-            'errors' => [
-                'required' => '{field} is required',
-            ]
-        ],
-        'email' => [
-            'rules' => 'required',
-            'errors' => [
-                'required' => '{field} is required',
-            ]
-        ],
-        'password' => [
-
-            'rules' => 'required',
-            'errors' => [
-                'required' => '{field} is required',
-            ]
-        ],
-        'passconf' => [
-            'rules' => 'required|matches[password]',
-            'errors' => [
-                'required' => '{field} is required',
-            ]
-        ]
+        'name' => 'required|string',
+        'email' => 'required|valid_email|is_unique[users.email]',
+        'password' => 'required',
+        'passconf' => 'required|matches[password]'
     ];
 }
