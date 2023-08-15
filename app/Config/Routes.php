@@ -29,17 +29,12 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-// $routes->get('/', 'Home::index');
-
-// $routes->get('/login', 'Auth::loginPage');
-// $routes->get('/register', 'Auth::registerPage');
-
+ 
 
 $myRoutes = [
-    '/' => 'Home::index',
+   
     '/login' => 'Auth::loginPage',
     '/register' => 'Auth::registerPage',
-    '/test/(:any)' => 'Welcome::test/$1',
 ];
 
 
@@ -48,6 +43,17 @@ $routes->map($myRoutes);
 $routes->post('/login', 'Auth::login');
 $routes->post('/register', 'Auth::register');
 
+$routes->group('', ['filter' => 'auth'], function ($routes) {
+    $routes->get('/', 'Todo::index');
+    $routes->get('/todo/(:any)/edit', 'Todo::edit/$1');
+    $routes->get('/todo/create', 'Todo::create');
+    $routes->post('/todo/store', 'Todo::store');
+    $routes->post('/todo/update/(:num)', 'Todo::update/$1');
+    $routes->delete('/todo/delete/(:id)', 'Todo::delete/$1');
+    $routes->get('/logout','Auth::logout');
+
+    
+});
 
 
 /*
