@@ -99,6 +99,8 @@ provides a few that you may use directly:
 Most of the time you will want to write your own test cases to hold functions and services
 common to your test suites.
 
+When writing test cases, you should aim to cover all major functionalities of your application. This includes models, controllers, and any business logic in your application. Make sure to write tests for both positive and negative scenarios to ensure your application behaves as expected in all situations.
+
 ## Creating Tests
 
 All tests go in the **tests/** directory. Each test file is a class that extends a
@@ -106,6 +108,8 @@ All tests go in the **tests/** directory. Each test file is a class that extends
 names must start with the word "test" and should have descriptive names for precisely what
 they are testing:
 `testUserCanModifyFile()` `testOutputColorMatchesInput()` `testIsLoggedInFailsWithInvalidUser()`
+
+When writing tests, aim to make them clear and concise. Each test should cover a single functionality or scenario. Avoid testing multiple things in one test. Use descriptive names for your tests to make it clear what they are testing.
 
 Writing tests is an art, and there are many resources available to help learn how.
 Review the links above and always pay attention to your code coverage.
